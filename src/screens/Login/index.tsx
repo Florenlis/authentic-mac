@@ -2,12 +2,13 @@ import React, {useState} from "react";
 import { KeyboardAvoidingView, View, Text, TextInput, Alert } from "react-native";
 import { MaterialIcons, Entypo} from "@expo/vector-icons";
 import {styles} from './styles';
-import {colors} from '../../../styles/colors';
-import {ComponentButtonInterface} from '../../../components';
+import {colors} from '../../styles/colors';
+import {ButtonInterface} from '../../components/ButtonInterface';
 import { LoginTypes } from "../../navigations/login.navigation";
 
+
 export interface IAuthenticate {
-    emial?: string;
+    email?: string;
     password?: string;
 }
  export function Login({navigation}: LoginTypes) {
@@ -22,11 +23,10 @@ export interface IAuthenticate {
     function handleRegister(){
         navigation.navigate("Register")
     }
-    function HandleChange(item: IAuthenticate){
+    function handleChange(item: IAuthenticate){
         setData({...data, ...item});
     }
- }
- export function Loin({navigation}: LoginTypes){
+ 
     return(
         <View style={styles.container}>
          <KeyboardAvoidingView>
@@ -35,9 +35,9 @@ export interface IAuthenticate {
             <MaterialIcons name="email" style={styles.icon}/>
             <TextInput
             placeholderTextColor={colors.third}
-            styles={styles.input}
+            style={styles.input}
             placeholder="Email"
-            keyboardType="email-adress"
+            keyboardType="email-address"
             autoCapitalize="none"
             onChangeText={(i) => handleChange({email: i})}
             />
@@ -46,15 +46,15 @@ export interface IAuthenticate {
             <Entypo name="key" style={styles.icon} />
             <TextInput
               placeholderTextColor={colors.third}
-              styles={styles.input}
+              style={styles.input}
               placeholder="Senha"
              secureTextEntry={true}
               autoCapitalize="none"
               onChangeText={(i) => handleChange({password: i})}
               />
          </View>
-         <ComponentButtonInterface title='Login' type='primary' onPressI={handleSignIn}/>
-         <ComponentButtonInterface title='Cadastre-se' type='secondary' onPressI={handleRegister}/>
+         <ButtonInterface title='Login' type='primary' onPressI={handleSignIn}/>
+         <ButtonInterface title='Cadastre-se' type='secondary' onPressI={handleRegister}/>
          </KeyboardAvoidingView>
         </View>
     );

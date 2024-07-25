@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { KeyboardAvoidingView, View, Text, TextInput, Alert } from 'react-native';
 import { MaterialIcons, Entypo, Ionicons } from "@expo/vector-icons";
 import { styles } from './styles';
-import { colors } from '../../../styles/colors';
+import { colors } from '../../styles/colors';
 import { LoginTypes } from '../../navigations/login.navigation';
-import { ComponentButtonInterface } from '../../../components';
+import { ComponentButtonInterface } from '../../components';
 
 export interface IRegister {
     name?: string

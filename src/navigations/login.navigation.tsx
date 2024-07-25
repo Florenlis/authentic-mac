@@ -1,5 +1,5 @@
 import {createStackNavigator, StackNavigationProp} from '@react-navigation/stack';
-import {ScreenLogin, ScreenRegister} from '../screens'
+import {ScreenRegister, ScreenLogin} from '../screens'
 type LoginStackParamList = {
     Login: undefined
     Register: undefined
