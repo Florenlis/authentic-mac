@@ -5,28 +5,35 @@ import {styles} from './styles';
 import {colors} from '../../styles/colors';
 import {ButtonInterface} from '../../components/ButtonInterface';
 import { LoginTypes } from "../../navigations/login.navigation";
-
+import { useAuth } from '../../hook/auth';
+import { AxiosError } from 'axios';
+import { apiUser } from "../../services/data";
 
 export interface IAuthenticate {
     email?: string;
     password?: string;
 }
- export function Login({navigation}: LoginTypes) {
+export function Login({ navigation }: LoginTypes) {
     const [data, setData] = useState<IAuthenticate>();
+    const { signIn, setLoading } = useAuth()
     async function handleSignIn() {
         if (data?.email && data.password) {
-            console.log(data)
+            setLoading(true)
+            try {
+                await signIn(data)
+            } catch (error) {
+                const err = error as AxiosError
+                const msg = err.response?.data as string
+                Alert.alert(msg)
+            }
+            setLoading(false)
         } else {
-            Alert.alert("Preencha todos os campos!!");
+            Alert.alert("Preencha todos os campos!");
         }
     }
-    function handleRegister(){
-        navigation.navigate("Register")
+    function handleChange(item: IAuthenticate) {
+        setData({ ...data, ...item });
     }
-    function handleChange(item: IAuthenticate){
-        setData({...data, ...item});
-    }
- 
     return(
         <View style={styles.container}>
          <KeyboardAvoidingView>
@@ -54,7 +61,7 @@ export interface IAuthenticate {
               />
          </View>
          <ButtonInterface title='Login' type='primary' onPressI={handleSignIn}/>
-         <ButtonInterface title='Cadastre-se' type='secondary' onPressI={handleRegister}/>
+         <ButtonInterface title='Cadastre-se' type='secondary' onPressI={()=>navigation.navigate("Register")}/>
          </KeyboardAvoidingView>
         </View>
     );
