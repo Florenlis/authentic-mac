@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "luluzcaflor",
-    "slug": "luluzcaflor",
+    "name": "loginJG",
+    "slug": "loginJG",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -27,17 +27,24 @@
       [
         "expo-camera",
         {
-          "cameraPermission": "Permite $(PRODUCT_NAME) acessar a sua camera",
-          "microphonePermission": "Permita $(PRODUCT_NAME acessar seu microfone",
+          "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera",
+          "microphonePermission": "Allow $(PRODUCT_NAME) to access your microphone",
           "recordAudioAndroid": true
         }
       ],
+      
       [
         "expo-media-library",
         {
-          "photosPermission": "Permita $(PRODUCT_NAME) acessar suas fotos.",
-          "savePhotosPermission": "Permita $(PRODUCT_NAME) salvar suas fotos",
+          "photoPermission": "Permita $(PRODUCT_NAME) acessar a sua câmera.",
+          "savePhotoPermission": "Permita $(PRODUCT_NAME) salvar suas fotos.",
           "isAccessMediaLocationEnabled": true
+        }
+      ],
+
+      [
+        "expo-image-picker",{
+          "photosPermission": "O aplicativo acessa suas fotod para que você possa compartilha-la com seus amigos :)"
         }
       ]
     ]
